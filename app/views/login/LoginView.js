@@ -20,38 +20,19 @@ import {
     TouchableOpacity,
     ActivityIndicator,
 } from 'react-native';
-
+import styles from '../../assets/styles/styles';
 import axios from 'axios';
 
 const LoginView = () => {
     return (
-        <View style={{
-            backgroundColor: 'white',
+        <View style={styles.container_center}>
+            <View style={styles.container_logo}>
 
-            flex: 1,
-
-            alignItems: 'center',
-
-            justifyContent: 'center'}}>
-            <View style={{
-                flexGrow: 1,
-
-                justifyContent: 'flex-end',
-
-                alignItems: 'center'
-
-            }}>
-
-                <Image style={{ width: 200, height: 200 }}
+                <Image style={ styles.logo_size}
 
                     source={require('../../assets/images/logo_jombang.png')} />
 
-                <Text style={{
-                    marginVertical: 15,
-
-                    fontSize: 18,
-
-                    color: 'red'}}>Kabupaten Jombang.</Text>
+                <Text style={styles.text_login}>Kabupaten Jombang.</Text>
 
             </View>
             <View style={{
@@ -60,21 +41,7 @@ const LoginView = () => {
                 justifyContent: 'center',
 
                 alignItems: 'center'}}>
-                <TextInput style={{
-                    width: 300,
-
-                    backgroundColor: 'grey',
-
-                    borderRadius: 25,
-
-                    paddingHorizontal: 16,
-                    textAlign:'center',
-                    
-                    fontSize: 16,
-
-                    color: '#ffffff',
-
-                    marginVertical: 10}}
+                <TextInput style={styles.form_input}
 
                     underlineColorAndroid='rgba(0,0,0,0)'
 
@@ -84,25 +51,9 @@ const LoginView = () => {
                     keyboardType={'numeric'}
 
                 />
-                <TouchableOpacity style={{
-                    width: 300,
+                <TouchableOpacity style={styles.button_standard}>
 
-                    backgroundColor: '#1c313a',
-
-                    borderRadius: 25,
-
-                    marginVertical: 10,
-
-                    paddingVertical: 13}}>
-
-                    <Text style={{
-                        fontSize: 16,
-
-                        fontWeight: '500',
-
-                        color: '#ffffff',
-
-                        textAlign: 'center'}}>MASUK</Text>
+                    <Text style={styles.text_button}>MASUK</Text>
 
                 </TouchableOpacity>
 

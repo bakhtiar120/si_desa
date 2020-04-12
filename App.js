@@ -17,11 +17,11 @@ import {
   Dimensions,
 } from 'react-native';
 import LoginView from './app/views/login/LoginView';
-
+import HomeView from './app/views/home/HomeView';
 const App: () => React$Node = () => {
   return (
     <>
-      <LoginView />
+      <HomeView />
     </>
   );
 };
