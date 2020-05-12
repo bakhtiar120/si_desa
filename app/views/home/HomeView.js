@@ -23,42 +23,68 @@ import {
 import styles from '../../assets/styles/styles';
 import axios from 'axios';
 import CardMenu from './CardMenu';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
-import Icon2 from 'react-native-vector-icons/AntDesign';
+import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../../assets/styles/colors';
 import {FlatGrid} from 'react-native-super-grid';
+import useHome from './useHome';
+import {ListItem, Overlay,Avatar, CheckBox} from 'react-native-elements';
 const HomeView = () => {
+    const [response, onShowListSurat,onLogout] = useHome();
     const items = [
-      {name: 'LAYANAN SURAT', icon_name: 'send', type: 'fontawesome'},
-      {name: 'GALERI DESA', icon_name: 'image', type: 'fontawesome'},
-      {name: 'WEB DESA', icon_name: 'web', type: 'materialcommunity'},
-      {name: 'PENGUMUMAN', icon_name: 'notification', type: 'antdesign'},
-      {name: 'PETA DESA', icon_name: 'map-marker', type: 'fontawesome'},
-      {name: 'RIWAYAT', icon_name: 'history', type: 'fontawesome'},
+      {name: 'Layanan Surat', icon_name: 'ios-mail', type: 'fontawesome'},
+      {name: 'Galeri Desa', icon_name: 'ios-image', type: 'fontawesome'},
+      {name: 'Web Desa', icon_name: 'md-globe', type: 'materialcommunity'},
+      {name: 'Pengumuman', icon_name: 'ios-megaphone', type: 'antdesign'},
+      {name: 'Peta Desa', icon_name: 'ios-map', type: 'fontawesome'},
+      {name: 'Riwayat', icon_name: 'ios-paper', type: 'fontawesome'},
     ];
   return (
     <View style={styles.container_main_absolute}>
       <View
         style={{
-          alignItems: 'center',
-          justifyContent: 'center',
           backgroundColor: '#BEBEBE',
           paddingBottom: 10,
         }}>
-        <View style={{marginTop: 10}}>
-          <Text style={styles.text_bold}>KABUPATEN JOMBANG</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            marginBottom: 30,
+            marginTop: 30,
+            marginLeft: 20,
+          }}>
+          <View>
+            <Avatar
+              size={80}
+              source={require('../../assets/images/logo_jombang.png')}
+            />
+          </View>
+          <View style={{marginLeft: 10}}>
+            <Text
+              style={{
+                fontWeight: 'bold',
+                fontSize: 20,
+                fontFamily: 'Montserrat-Bold',
+              }}>
+              Kabupaten jombang
+            </Text>
+            <Text
+              style={{
+                fontWeight: 'bold',
+                fontSize: 16,
+                fontFamily: 'Montserrat-Bold',
+              }}>
+              Desa Sumberagung
+            </Text>
+            <Text
+              style={{
+                fontWeight: 'bold',
+                fontSize: 16,
+                fontFamily: 'Montserrat-Bold',
+              }}>
+              Kecamatan Peterongan
+            </Text>
+          </View>
         </View>
-        <Image
-          style={{height: 100, width: 100}}
-          source={require('../../assets/images/logo_jombang.png')}
-        />
-        <Text style={[styles.text_bold, {marginTop: 10}]}>
-          DESA SUMBERAGUNG
-        </Text>
-        <Text style={[styles.text_bold, {marginTop: 10, marginBottom: 10}]}>
-          KECAMATAN PETERONGAN
-        </Text>
       </View>
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <Text style={{fontSize: 15, fontWeight: 'bold', marginTop: 10}}>
@@ -73,28 +99,28 @@ const HomeView = () => {
         // fixed
         // spacing={20}
         renderItem={({item, index}) => (
-          <View
-            style={[
-              styles.itemContainer,
-              {
-                backgroundColor: '#BEBEBE',
-                justifyContent: 'center',
-                alignItems: 'center',
-              },
-            ]}>
-            {item.type == 'fontawesome' ? (
+          <TouchableOpacity onPress={() => onShowListSurat(item.name)}>
+            <View
+              style={[
+                styles.itemContainer,
+                {
+                  backgroundColor: '#BEBEBE',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                },
+              ]}>
               <Icon name={item.icon_name} size={30} color={Colors.black} />
-            ) : item.type == 'antdesign' ? (
-              <Icon2 name={item.icon_name} size={30} color={Colors.black} />
-            ) : (
-              <Icon1 name={item.icon_name} size={30} color={Colors.black} />
-            )}
-            <Text style={[styles.itemName, {marginTop: 5}]}>{item.name}</Text>
-          </View>
+              <Text style={[styles.itemName, {marginTop: 5}]}>
+                {item.name}
+              </Text>
+            </View>
+          </TouchableOpacity>
         )}
       />
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <TouchableOpacity style={styles.button_standard}>
+        <TouchableOpacity
+          onPress={() => onLogout()}
+          style={styles.button_standard}>
           <Text style={styles.text_button}>KELUAR</Text>
         </TouchableOpacity>
       </View>

@@ -31,6 +31,17 @@ export default (Styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
   },
+  my_card: {
+    margin: 5,
+  },
+  card_view: {
+    flexDirection: 'row',
+    padding: 6,
+  },
+  text_home: {
+    fontSize: 20,
+    marginLeft: 10,
+  },
   container_center: {
     backgroundColor: colors.white,
 
@@ -53,7 +64,8 @@ export default (Styles = StyleSheet.create({
   itemName: {
     fontSize: 16,
     color: '#fff',
-    fontWeight: '600',
+    fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
   },
   container_logo: {
     flexGrow: 1,
@@ -112,5 +124,29 @@ export default (Styles = StyleSheet.create({
     color: '#ffffff',
 
     textAlign: 'center',
+  },
+  imageGallery: {
+    height: 120,
+    width: '100%',
+  },
+  fullImageStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    width: '98%',
+    resizeMode: 'contain',
+  },
+  modelStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.4)',
+  },
+  closeButtonStyle: {
+    width: 25,
+    height: 25,
+    top: 9,
+    right: 9,
+    position: 'absolute',
   },
 }));

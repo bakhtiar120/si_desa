@@ -22,8 +22,9 @@ import {
 } from 'react-native';
 import styles from '../../assets/styles/styles';
 import axios from 'axios';
-
+import useLogin from './useLogin';
 const LoginView = () => {
+    const [response,onShowMenu] = useLogin();
     return (
         <View style={styles.container_center}>
             <View style={styles.container_logo}>
@@ -51,7 +52,7 @@ const LoginView = () => {
                     keyboardType={'numeric'}
 
                 />
-                <TouchableOpacity style={styles.button_standard}>
+                <TouchableOpacity onPress={onShowMenu} style={styles.button_standard}>
 
                     <Text style={styles.text_button}>MASUK</Text>
 
