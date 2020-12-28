@@ -16,84 +16,86 @@ import {
   Text,
   TextInput,
   StatusBar,
-  Dimensions,
   TouchableOpacity,
   ActivityIndicator,
   FlatList,
 } from 'react-native';
 import styles from '../../assets/styles/styles';
+import { responsiveHeight, responsiveWidth, responsiveFontSize } from 'react-native-responsive-dimensions';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../../assets/styles/colors';
 import {FlatGrid} from 'react-native-super-grid';
 import useListHistory from './useListHistory';
+import Dimensions from '../../assets/styles/dimensions';
+import { Badge } from 'react-native-elements';
 // import useFormSurat from '../form_surat/UseFormSurat';
 const ListHistoryView = () => {
   const items = [
     {
       id: 1,
       name: 'Surat Bantuan Siswa Miskin',
-      status: 'accepted',
+      status: 0,
       date: '19 Juni 2019',
     },
     {
       id: 2,
       name: 'Surat Keterangan Bepergian',
-      status: 'denied',
+      status:1,
       date: '10 Juli 2019',
     },
     {
       id: 3,
       name: 'Form Permohonan E-KTP Baru',
-      status: 'accepted',
+      status: 2,
       date: '07 Agustus 2019',
     },
     {
       id: 4,
       name: 'Surat Belum Pernah Menikah',
-      status: 'accepted',
+      status: 3,
       date: '10 Agustus 2019',
     },
     {
       id: 5,
       name: 'Surat Talak atau Cerai',
-      status: 'denied',
+      status: 1,
       date: '19 Agustus 2019',
     },
     {
       id: 6,
       name: 'Surat Pengantar SKCK',
-      status: 'accepted',
+      status: 3,
       date: '28 Agustus 2019',
     },
     {
       id: 7,
       name: 'Surat Domisili Badan/Usaha',
-      status: 'denied',
+      status: 0,
       date: '05 September 2019',
     },
     {
       id: 8,
       name: 'Surat Keterangan Usaha',
-      status: 'accepted',
+      status: 2,
       date: '10 September 2019',
     },
     {
       id: 9,
       name: 'Surat Domisili Penduduk',
-      status: 'accepted',
+      status: 1,
       date: '19 September 2019',
     },
     {
       id: 10,
       name: 'Surat Keterangan Identitas Ganda',
-      status: 'denied',
+      status: 0,
       date: '28 September 2019',
     },
     {
       id: 11,
       name: 'Surat Izin Kerja',
-      status: 'accepted',
+      status: 3,
       date: '07 Oktober 2019',
     },
   ];
@@ -109,9 +111,24 @@ const ListHistoryView = () => {
           marginLeft: 10,
           marginRight: 10,
         }}>
-        <Text style={{fontWeight: 'bold', marginLeft: 10, color: 'white'}}>
+          <Badge badgeStyle={{ backgroundColor:Colors.chart_red, alignSelf: 'flex-start', marginLeft: Dimensions.default_padding_10, marginTop: Dimensions.default_padding_10 }}
+                        value={<Text style={[Styles.textFontFamily, { color: Colors.white,marginRight:10,marginLeft:10, fontSize: responsiveFontSize(1.5) }]}>
+                        { 
+                          status==0 ? "Sedang diproses"
+                          :
+                          status==1 ? "Menunggu TTD"
+                          :
+                          status==2 ? "Bisa diambil"
+                          :
+                          status==3 ? "Dibatalkan"
+                          :
+                          ""
+                        }
+                    </Text>}>
+                        </Badge>
+        {/* <Text style={{fontWeight: 'bold', marginLeft: 10, color: 'white'}}>
           {date}
-        </Text>
+        </Text> */}
         <View
           style={{
             flexDirection: 'row',
@@ -128,7 +145,7 @@ const ListHistoryView = () => {
           />
           <Text
             style={{
-              marginTop: 5,
+              marginTop: 0,
               marginLeft: 10,
               fontSize: 12,
               fontWeight: 'bold',
@@ -146,30 +163,21 @@ const ListHistoryView = () => {
             marginRight: 10,
             borderRadius: 5,
           }}>
-          {status == 'accepted' ? (
             <Icon
-              name={'ios-checkmark-circle'}
+              name={'ios-calendar'}
               style={{marginLeft: 10}}
               size={20}
               color={Colors.white}
             />
-          ) : (
-            <Icon
-              name={'ios-close-circle'}
-              style={{marginLeft: 10}}
-              size={20}
-              color={Colors.white}
-            />
-          )}
           <Text
             style={{
-              marginTop: 5,
+              marginTop: 0,
               marginLeft: 10,
               fontSize: 12,
               fontWeight: 'bold',
               color: Colors.white,
             }}>
-            Bpk Ali
+            {date}
           </Text>
         </View>
       </View>

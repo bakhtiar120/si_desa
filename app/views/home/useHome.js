@@ -15,24 +15,27 @@ const useHome = () => {
   const [response, setResponse] = useState('');
   const {signOut} = useContext(AuthContext);
 
-  onShowListSurat = async (name) => {
-      if (name == 'Layanan Surat')
-       navigation.navigate('ListSurat', {});
-    else if(name=='Web Desa') {
-        Linking.openURL('https://google.com');
+  onShowListSurat = async name => {
+    if (name == 'Layanan Surat') navigation.navigate('FormSurat', {});
+    else if (name == 'Web Desa') {
+      Linking.openURL('https://wringinpitu.desapintar.org/');
+    } else if (name == 'Galeri Desa') {
+      navigation.navigate('Gallery');
+    } else if (name == 'Riwayat') {
+      navigation.navigate('ListHistory');
+    } else if (name == 'Pengumuman') {
+      
     }
-    else if (name == 'Galeri Desa') {
-           navigation.navigate('Gallery');
-         }
-         else if(name=='Riwayat') {
-           navigation.navigate('ListHistory');
-         }
   };
+
+  onClickProfile = async() =>{
+    navigation.navigate('Profile');
+  }
   onLogout = async () => {
     signOut();
   };
 
-  return [response, onShowListSurat,onLogout];
+  return [response, onShowListSurat,onClickProfile, onLogout];
 };
 
 export default useHome;

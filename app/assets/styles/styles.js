@@ -26,6 +26,38 @@ function em(value) {
 }
 
 export default (Styles = StyleSheet.create({
+  container: {
+        flex: 1,
+    },
+    bio_profile_text: {
+        marginLeft: 20,
+        fontSize: responsiveFontSize(1.8),
+        color: Colors.black,
+        fontWeight:'bold',
+        fontFamily: Platform.select({
+            android: 'Lato-Regular'
+        }),
+    },
+    textFontFamily: {
+        fontFamily: Platform.select({
+            android: 'Lato-Regular'
+        }),
+
+    },
+    separator_line: {
+        backgroundColor: '#BDBDBD',
+        width: x - em(1.5) * 1,
+        height: 1,
+        marginBottom: em(1),
+        marginTop: em(0.75),
+        marginHorizontal: em(1),
+    },
+    bio_profile_description: {
+        marginLeft: 20,
+        marginTop: 10,
+        marginRight: 20,
+        fontSize: responsiveFontSize(1.6)
+    },
   container_main_absolute: {
     // alignItems:'center',
     flex: 1,
@@ -51,6 +83,18 @@ export default (Styles = StyleSheet.create({
 
     justifyContent: 'center',
   },
+  image_center: {
+        alignItems: 'center',
+        flexDirection: 'column'
+    },
+  text_nama: {
+        marginTop: 10,
+        fontSize: responsiveFontSize(3),
+        fontWeight: '500',
+        fontFamily: Platform.select({
+            android: 'Lato-Regular'
+        }),
+    },
   gridView: {
     marginTop: 10,
     flex: 1,

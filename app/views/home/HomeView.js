@@ -29,7 +29,7 @@ import {FlatGrid} from 'react-native-super-grid';
 import useHome from './useHome';
 import {ListItem, Overlay,Avatar, CheckBox} from 'react-native-elements';
 const HomeView = () => {
-    const [response, onShowListSurat,onLogout] = useHome();
+    const [response, onShowListSurat,onClickProfile,onLogout] = useHome();
     const items = [
       {name: 'Layanan Surat', icon_name: 'ios-mail', type: 'fontawesome'},
       {name: 'Galeri Desa', icon_name: 'ios-image', type: 'fontawesome'},
@@ -73,7 +73,7 @@ const HomeView = () => {
                 fontSize: 16,
                 fontFamily: 'Montserrat-Bold',
               }}>
-              Desa Sumberagung
+              Desa Wringinpitu
             </Text>
             <Text
               style={{
@@ -81,15 +81,18 @@ const HomeView = () => {
                 fontSize: 16,
                 fontFamily: 'Montserrat-Bold',
               }}>
-              Kecamatan Peterongan
+              Kecamatan Mojowarno
             </Text>
           </View>
         </View>
       </View>
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Text style={{fontSize: 15, fontWeight: 'bold', marginTop: 10}}>
+        <TouchableOpacity onPress={() => onClickProfile()}>
+          <Text style={{fontSize: 15, fontWeight: 'bold', marginTop: 10}}>
           3512361236126 ( M sholahudin )
         </Text>
+        </TouchableOpacity>
+        
       </View>
       <FlatGrid
         itemDimension={130}

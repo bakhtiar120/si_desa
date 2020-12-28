@@ -11,6 +11,8 @@ import ListSurat from '../../views/list_surat/ListSuratView';
 import FormSurat from '../../views/form_surat/FormSuratView';
 import Gallery from '../../views/gallery/GalleryView';
 import ListHistory from '../../views/list_history/ListHistoryView';
+import Pengumuman from '../../views/pengumuman/PengumumanView';
+import Profile from '../../views/profile/ProfileView';
 import {transition_config} from '../transition_config';
 const Stack = createStackNavigator();
 
@@ -50,6 +52,17 @@ function MainStackNavigator() {
             close: transition_config,
           },
         }}
+        name="Pengumuman"
+        component={Pengumuman}
+      />
+      <Stack.Screen
+        options={{
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          transitionSpec: {
+            open: transition_config,
+            close: transition_config,
+          },
+        }}
         name="ListSurat"
         component={ListSurat}
       />
@@ -74,6 +87,17 @@ function MainStackNavigator() {
         }}
         name="Gallery"
         component={Gallery}
+      />
+      <Stack.Screen
+        options={{
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          transitionSpec: {
+            open: transition_config,
+            close: transition_config,
+          },
+        }}
+        name="Profile"
+        component={Profile}
       />
     </Stack.Navigator>
   );
